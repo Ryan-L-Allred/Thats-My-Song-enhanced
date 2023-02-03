@@ -21,7 +21,7 @@ namespace ThatsMySong.Repositories
                                LEFT JOIN UserType ut on up.UserTypeId = ut.Id
                          WHERE FirebaseUserId = @FirebaseuserId";
 
-                    cmd.Parameters.AddWithValue("@FireUserId", firebaseUserId);
+                    cmd.Parameters.AddWithValue("@FirebaseuserId", firebaseUserId);
 
                     UserProfile userProfile = null;
 
