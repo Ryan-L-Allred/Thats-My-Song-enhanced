@@ -5,6 +5,7 @@ import Register from "./Register";
 import Hello from "./Hello";
 // import TagList from "./TagList";
 //  import TagForm from "./TagForm";
+import HipHopSongList from "./HipHopSongList";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -14,6 +15,7 @@ export default function ApplicationViews({ isLoggedIn }) {
           {/* <Route path="tags">
             <Route index element={<TagList/>}/>
           </Route> */}
+          <Route index element={<HipHopSongList/>} />
           <Route
             index
             element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>
