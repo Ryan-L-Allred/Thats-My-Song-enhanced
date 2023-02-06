@@ -10,30 +10,30 @@ namespace ThatsMySong.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HipHopSongController : ControllerBase
+    public class SampleSongController : ControllerBase
     {
-        private IHipHopSongRepository _hipHopSongRepo;
+        private ISampleSongRepository _sampleSongRepo;
 
-        public HipHopSongController(IHipHopSongRepository hipHopSongRepo)
+        public SampleSongController(ISampleSongRepository sampleSongRepo)
         {
-            _hipHopSongRepo= hipHopSongRepo;
+            _sampleSongRepo = sampleSongRepo;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_hipHopSongRepo.GetAllHipHopSongs());
+            return Ok(_sampleSongRepo.GetAllSampleSongs());
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var hipHopSong = _hipHopSongRepo.GetHipHopSongById(id);
-            if (hipHopSong == null)
+            var sampleSong = _sampleSongRepo.GetSampleSongById(id);
+            if (sampleSong == null)
             {
                 return NotFound();
             }
-            return Ok(hipHopSong);
+            return Ok(sampleSong);
         }
     }
 }
