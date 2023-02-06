@@ -6,6 +6,7 @@ import Hello from "./Hello";
 // import TagList from "./TagList";
 //  import TagForm from "./TagForm";
 import HipHopSongList from "./HipHopSongList";
+import HipHopSongDetails from "./HipHopSongDetails";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -16,6 +17,10 @@ export default function ApplicationViews({ isLoggedIn }) {
             <Route index element={<TagList/>}/>
           </Route> */}
           <Route index element={<HipHopSongList/>} />
+          <Route path="hiphopsongs">
+            <Route index element={<HipHopSongList/>} />
+            <Route path=":id" element={<HipHopSongDetails/>} />
+          </Route>
           <Route
             index
             element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>

@@ -24,20 +24,20 @@ export default function Header({ isLoggedIn }) {
           <Nav className="mr-auto" navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
-              <NavItem>
+              <NavbarBrand>
                 <NavLink tag={RRNavLink} to="/">Home</NavLink>
                 
-              </NavItem>
+              </NavbarBrand>
 
             }
           </Nav>
           <Nav navbar>
             {isLoggedIn &&
               <>
-                <NavItem>
+                <NavbarBrand>
                   <a aria-current="page" className="nav-link"
                     style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
-                </NavItem>
+                </NavbarBrand>
                
               </>
             }
