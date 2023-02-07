@@ -3,10 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
-// import TagList from "./TagList";
-//  import TagForm from "./TagForm";
-import HipHopSongList from "./HipHopSongList";
-import HipHopSongDetails from "./HipHopSongDetails";
+import SongList from "./SongList";
+import SongDetails from "./SongDetails";
+import SongForm from "./SongForm";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -16,10 +15,11 @@ export default function ApplicationViews({ isLoggedIn }) {
           {/* <Route path="tags">
             <Route index element={<TagList/>}/>
           </Route> */}
-          <Route index element={<HipHopSongList/>} />
-          <Route path="hiphopsongs">
-            <Route index element={<HipHopSongList/>} />
-            <Route path=":id" element={<HipHopSongDetails/>} />
+          <Route index element={<SongList/>} />
+          <Route path="songs">
+            <Route index element={<SongList/>} />
+            <Route path=":id" element={<SongDetails/>} />
+            <Route path="add" element={<SongForm/>} />
           </Route>
           <Route
             index
