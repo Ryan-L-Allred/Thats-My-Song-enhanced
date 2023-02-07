@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using ThatsMySong.Models;
 
 namespace ThatsMySong.Repositories
@@ -31,6 +32,7 @@ namespace ThatsMySong.Repositories
                         userProfile = new UserProfile()
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            FirebaseUserId = reader.GetString(reader.GetOrdinal("FirebaseUserId")),
                             Name = reader.GetString(reader.GetOrdinal("UserProfileName")),
                             Email = reader.GetString(reader.GetOrdinal("Email")),
                             UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
@@ -47,7 +49,46 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public void Add(UserProfile userProfile)
+        public UserProfile GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                SELECT Id, [Name], Email, UserTypeId, FirebaseUserId
+                  FROM UserProfile
+                WHERE Id = @Id";
+
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    UserProfile userProfile = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        userProfile = new UserProfile()
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            Name = reader.GetString(reader.GetOrdinal("UserProfileName")),
+                            Email = reader.GetString(reader.GetOrdinal("Email")),
+                            UserTypeId = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                            UserType = new UserType()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("UserTypeId")),
+                                Name = reader.GetString(reader.GetOrdinal("UserTypeName"))
+                            }
+                        };
+                    }
+                    reader.Close();
+                    return userProfile;
+                }
+                }
+            }
+
+            public void Add(UserProfile userProfile)
         {
             using (var conn = Connection)
             {

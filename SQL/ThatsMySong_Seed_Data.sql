@@ -30,7 +30,7 @@ insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) va
 insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (6, 'Peg', 'Aja', 'Steely Dan', 4, 3);
 insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (7, '(Sittin On)the Dock of the Bay', 'The Dock of the Bay', 'Otis Redding', 6, 2);
 insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (8, 'Eye Know' , '3 Feet High and Rising', 'De La Soul', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (9, 'We Live in Brooklyn, Baby', 'He''s Comming', 'Roy Ayers Ubiquity', 3, 3);
+insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (9, 'We Live in Brooklyn, Baby', 'He''s Coming', 'Roy Ayers Ubiquity', 3, 3);
 insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (10, 'Brooklyn', 'Black on Both Sides', 'Mos Def', 1, 1);
 insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (11, 'Borough Check', 'Blowout Comb', 'Digable Planets', 1, 1);
 set identity_insert [Song] off
