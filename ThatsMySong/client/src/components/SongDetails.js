@@ -5,11 +5,16 @@ import  Song  from "./Song";
 
 const SongDetails = () => {
     const [song, setSong] = useState();
+    const [sample, setSample] = useState();
     const { id } = useParams();
 
     useEffect(() => {
         getSongById(id).then(setSong);
     }, []);
+
+    useEffect(() => {
+        
+    })
 
     if (!song) {
         return null;
