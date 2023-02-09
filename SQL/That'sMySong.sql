@@ -1,4 +1,4 @@
-USE [master]
+ USE [master]
 
 IF db_id('ThatsMySong') IS NULL
 	CREATE DATABASE [ThatsMySong]
