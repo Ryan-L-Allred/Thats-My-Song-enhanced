@@ -86,3 +86,7 @@ export const getAllSamples = () => {
     });
   });
 };
+
+export const getSampleById = (id) => {
+  return fetch(`${sampleUrl}/${id}`).then((res) => res.json());
+}

@@ -105,7 +105,8 @@ namespace ThatsMySong.Repositories
                     cmd.CommandText = @"
                         SELECT Id, Title, AlbumName, ArtistName, GenreId, UserProfileId
 	                    FROM Song 
-	                    WHERE  GenreId = 1";
+	                    WHERE  GenreId = 1
+                        ORDER by Title";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -130,41 +131,6 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public Song GetHipHopSongById(int id)
-        {
-            using (var conn = Connection)
-            {
-
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        SELECT  Id, Title, AlbumName, ArtistName, GenreId, UserProfileId
-	                    FROM Song 
-	                    WHERE id = @id AND GenreId = 1";
-
-                    cmd.Parameters.AddWithValue("@id", id);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-
-                        Song hipHopSong = null;
-                        if (reader.Read())
-                        {
-                            hipHopSong = new Song()
-                            {
-                                Title = reader.GetString(reader.GetOrdinal("Title")),
-                                AlbumName = reader.GetString(reader.GetOrdinal("AlbumName")),
-                                ArtistName = reader.GetString(reader.GetOrdinal("ArtistName")),
-                                GenreId = reader.GetInt32(reader.GetOrdinal("GenreId")),
-                                UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId"))
-                            };
-                        }
-
-                        return hipHopSong;
-                    }
-                }
-            }
-        }
         public void AddSong(Song song)
         {
             using (var conn = Connection)
@@ -238,8 +204,24 @@ namespace ThatsMySong.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                               SELECT Id, SongId, SampledSongId
-                                FROM Sample";
+                               SELECT sa.Id, sa.SongId, 
+	                                  s.Title as SongTitle , s.AlbumName as SongAlbumName, s.ArtistName as SongArtistName,
+                                      s.GenreId as SongGenreId, s.UserProfileId as SongUserProfileId,
+
+	                                  g.Name as SongGenreName,
+
+	                                  sa.SampledSongId,
+	                                  ss.Title as SampleTitle, ss.AlbumName as SampleAlbumName, ss.ArtistName as SampleArtistName,
+                                      ss.GenreId as SampleGenreId, ss.UserProfileId as SampleUserProfileId,
+
+	                                  gg.Name as SampleGenreName
+
+                                      FROM Sample sa
+	                                  JOIN Song s ON sa.SongId = s.Id
+	                                  JOIN Genre g ON s.GenreId = g.Id
+	                                  JOIN Song ss ON sa.SampledSongId = ss.Id
+	                                  JOIN Genre gg ON ss.GenreId = gg.Id
+                                      ";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -250,7 +232,35 @@ namespace ThatsMySong.Repositories
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 SongId = reader.GetInt32(reader.GetOrdinal("SongId")),
-                                SampledSongId = reader.GetInt32(reader.GetOrdinal("SampledSongId"))
+                                Song = new Song()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("SongId")),
+                                    Title = reader.GetString(reader.GetOrdinal("SongTitle")),
+                                    AlbumName = reader.GetString(reader.GetOrdinal("SongAlbumName")),
+                                    ArtistName = reader.GetString(reader.GetOrdinal("SongArtistName")),
+                                    GenreId = reader.GetInt32(reader.GetOrdinal("SongGenreId")),
+                                    Genre = new Genre()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("SongGenreId")),
+                                        Name = reader.GetString(reader.GetOrdinal("SongGenreName"))
+                                    },
+                                    UserProfileId = reader.GetInt32(reader.GetOrdinal("SongUserProfileId"))
+                                },
+                                SampledSongId = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
+                                SampledSong = new Song()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
+                                    Title = reader.GetString(reader.GetOrdinal("SampleTitle")),
+                                    AlbumName = reader.GetString(reader.GetOrdinal("SampleAlbumName")),
+                                    ArtistName = reader.GetString(reader.GetOrdinal("SampleArtistName")),
+                                    GenreId = reader.GetInt32(reader.GetOrdinal("SampleGenreId")),
+                                    Genre = new Genre()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("SampleGenreId")),
+                                        Name = reader.GetString(reader.GetOrdinal("SampleGenreName"))
+                                    },
+                                    UserProfileId = reader.GetInt32(reader.GetOrdinal("SampleUserProfileId"))
+                                }
                             };
                             samples.Add(sample);
                         }
@@ -260,6 +270,81 @@ namespace ThatsMySong.Repositories
             }
         }
 
+        public Sample GetSampleById(int id)
+        {
+            using (var conn = Connection)
+            {
+
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                                    SELECT sa.Id, sa.SongId, 
+	                                  s.Title as SongTitle , s.AlbumName as SongAlbumName, s.ArtistName as SongArtistName,
+                                      s.GenreId as SongGenreId, s.UserProfileId as SongUserProfileId,
+
+	                                  g.Name as SongGenreName,
+
+	                                  sa.SampledSongId,
+	                                  ss.Title as SampleTitle, ss.AlbumName as SampleAlbumName, ss.ArtistName as SampleArtistName,
+                                      ss.GenreId as SampleGenreId, ss.UserProfileId as SampleUserProfileId,
+
+	                                  gg.Name as SampleGenreName
+
+                                      FROM Sample sa
+	                                  JOIN Song s ON sa.SongId = s.Id
+	                                  JOIN Genre g ON s.GenreId = g.Id
+	                                  JOIN Song ss ON sa.SampledSongId = ss.Id
+	                                  JOIN Genre gg ON ss.GenreId = gg.Id
+                                      WHERE sa.Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        Sample sample = null;
+                        if (reader.Read())
+                        {
+                            sample = new Sample()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                SongId = reader.GetInt32(reader.GetOrdinal("SongId")),
+                                Song = new Song()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("SongId")),
+                                    Title = reader.GetString(reader.GetOrdinal("SongTitle")),
+                                    AlbumName = reader.GetString(reader.GetOrdinal("SongAlbumName")),
+                                    ArtistName = reader.GetString(reader.GetOrdinal("SongArtistName")),
+                                    GenreId = reader.GetInt32(reader.GetOrdinal("SongGenreId")),
+                                    Genre = new Genre()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("SongGenreId")),
+                                        Name = reader.GetString(reader.GetOrdinal("SongGenreName"))
+                                    },
+                                    UserProfileId = reader.GetInt32(reader.GetOrdinal("SongUserProfileId"))
+                                },
+                                SampledSongId = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
+                                SampledSong = new Song()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
+                                    Title = reader.GetString(reader.GetOrdinal("SampleTitle")),
+                                    AlbumName = reader.GetString(reader.GetOrdinal("SampleAlbumName")),
+                                    ArtistName = reader.GetString(reader.GetOrdinal("SampleArtistName")),
+                                    GenreId = reader.GetInt32(reader.GetOrdinal("SampleGenreId")),
+                                    Genre = new Genre()
+                                    {
+                                        Id = reader.GetInt32(reader.GetOrdinal("SampleGenreId")),
+                                        Name = reader.GetString(reader.GetOrdinal("SampleGenreName"))
+                                    },
+                                    UserProfileId = reader.GetInt32(reader.GetOrdinal("SampleUserProfileId"))
+                                }
+                            };
+                        }
+                        return sample;
+                    }
+                }
+            }
+        }
         public void AddSample(Sample sample)
         {
             using (var conn = Connection)
