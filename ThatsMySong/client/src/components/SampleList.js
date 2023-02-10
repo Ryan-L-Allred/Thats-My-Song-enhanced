@@ -20,8 +20,9 @@ const SampleList = () => {
         <div>
             
             {samples.map(sample => (
-                <div>{sample?.sampledSong?.title}</div>
-                
+                <Link to={`/songs/${sample.id}`}>
+                <div>{sample?.song?.title}</div>
+                </Link>
             ))}
             
         </div>

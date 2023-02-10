@@ -1,18 +1,24 @@
-﻿SELECT sa.SongId, 
-	   s.Id, s.Title as SongTitle , s.AlbumName, s.ArtistName, s.GenreId, s.UserProfileId,
-	   g.Name as GenreName,
-	   sa.SampledSongId,
-	   ss.Id, ss.Title as SampleSongTitle, ss.AlbumName, ss.ArtistName, ss.GenreId, ss.UserProfileId,
-	   gg.Name as SampleGenreName
-  FROM Sample sa
-	JOIN Song s ON sa.SongId = s.Id
-	JOIN Genre g ON s.GenreId = g.Id
-	JOIN Song ss ON sa.SampledSongId = ss.Id
-	JOIN Genre gg ON ss.GenreId = gg.Id
-    ORDER by SongTitle
+﻿SELECT sa.Id, sa.SongId, 
+	                                  s.Title as SongTitle , s.AlbumName as SongAlbumName, s.ArtistName as SongArtistName,
+                                      s.UserProfileId as SongUserProfileId,
+
+	                                  g.Name as SongGenreName,
+
+	                                  sa.SampledSongId,
+	                                  ss.Title as SampleTitle, ss.AlbumName as SampleAlbumName, ss.ArtistName as SampleArtistName,
+                                      ss.UserProfileId as SampleUserProfileId,
+
+	                                  gg.Name as SampleGenreName
+
+                                      FROM Sample sa
+	                                  JOIN Song s ON sa.SongId = s.Id
+	                                  JOIN Genre g ON s.GenreId = g.Id
+	                                  JOIN Song ss ON sa.SampledSongId = ss.Id
+	                                  JOIN Genre gg ON ss.GenreId = gg.Id
+                                     
 	   
 	
 	SELECT Id, Title, AlbumName, ArtistName, GenreId, UserProfileId
 	FROM Song 
-	WHERE  GenreId = 1
+	WHERE  GenreId != 1
 	ORDER by Title;

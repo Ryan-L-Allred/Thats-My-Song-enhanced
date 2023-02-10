@@ -92,6 +92,16 @@ namespace ThatsMySong.Controllers
             return Ok(_songRepo.GetAllSamples());
         }
 
+        [HttpGet("Sample/{id}")]
+        public IActionResult GetSampleId(int id)
+        {
+            var sample = _songRepo.GetSampleById(id);
+            if (sample == null)
+            {
+                return NotFound();
+            }
+            return Ok(sample);
+        }
 
         //[Authorize]
         [HttpPost("Sample")]

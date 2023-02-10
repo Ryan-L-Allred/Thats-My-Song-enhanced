@@ -9,11 +9,11 @@ namespace ThatsMySong.Repositories
         List<Song> GetAllSongs();
         Song GetSongById(int id);
         List<Song> GetAllHipHopSongs();
-        Song GetHipHopSongById(int id);
         void AddSong(Song song);
         void UpdateSong(Song song);
         void DeleteSong(int id);
         List<Sample> GetAllSamples();
+        Sample GetSampleById(int id);
         void AddSample(Sample sample);
         void UpdateSample(Sample sample);
         void DeleteSample(int id);

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getSampleById } from "../modules/songManager";
 import { getSongById } from "../modules/songManager";
 import  Song  from "./Song";
+import Sample from "./Sample"
 
 const SongDetails = () => {
     const [song, setSong] = useState();
@@ -9,20 +11,27 @@ const SongDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        getSongById(id).then(setSong);
-    }, []);
+        getSampleById(id).then(setSample)
+    }, [])
 
-    useEffect(() => {
-        
-    })
+    // useEffect(() => {
+    //     getSongById(id).then(setSong)
+    // }, []);
 
-    if (!song) {
+
+    if (!sample) {
         return null;
     }
 
+    // if (!song) {
+    //     return null;
+    // }
+
+
    return (
         <div>
-            <Song song={song}  />
+            <Sample sample={sample}  />
+            {/* <Song song={song} /> */}
         </div>
    );
 };
