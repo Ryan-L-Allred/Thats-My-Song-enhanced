@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSampleById } from "../modules/songManager";
 import { getSongById } from "../modules/songManager";
+import { HipHopSong } from "./HipHopSong";
 import  Song  from "./Song";
 import Sample from "./Sample"
 
-const SampleDetails = () => {
-    const [song, setSong] = useState();
+const HipHopSongDetails = () => {
+    const [hipHopSong, setHipHopSong] = useState();
     const [sample, setSample] = useState();
     const { id } = useParams();
 
     useEffect(() => {
-        getSampleById(id).then(setSample)
+        getSongById(id).then(setHipHopSong)
     }, [])
 
     // useEffect(() => {
@@ -19,7 +20,7 @@ const SampleDetails = () => {
     // }, []);
 
 
-    if (!sample) {
+    if (!hipHopSong) {
         return null;
     }
 
@@ -30,10 +31,10 @@ const SampleDetails = () => {
 
    return (
         <div>
-            <Sample sample={sample}  />
+            <Song song={hipHopSong}  />
             {/* <Song song={song} /> */}
         </div>
    );
 };
 
-export default SampleDetails;
+export default HipHopSongDetails;

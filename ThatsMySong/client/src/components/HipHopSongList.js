@@ -18,12 +18,18 @@ const HipHopSongList = () => {
 
     return (
         <div>
-            <button onClick={() => navigate("/songs/add")}>Add Song </button>
+            <button onClick={() => navigate("/hiphopsongs/add")}>Add Song </button>
             
             {hipHopSongs.map(hipHopSong => (
-                // <Link to={`/songs/${hipHopSong.id}`}>
+                
+            <div>
+                <Link to={`/hiphopsongs/${hipHopSong.id}`}>
                 <div>{hipHopSong.title}</div>
-                // {/* </Link> */}
+                </Link>
+                
+                <button onClick={() => navigate(`/hiphopsongs/${hipHopSong.id}/edit`)}>Edit Song </button>
+                
+            </div>
             ))}
             
         </div>

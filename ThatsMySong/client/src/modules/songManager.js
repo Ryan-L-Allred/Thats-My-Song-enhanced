@@ -101,7 +101,23 @@ export const getAllGenres = () => {
 };
 
 export const getSongById = (id) => {
-    return fetch(`${baseUrl}/${id}`).then((res) => res.json());
+  // return fetch(`${baseUrl}/${id}`).then((res) => res.json());
+  return getToken().then((token) => {
+    return fetch(`${baseUrl}/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error(
+          "An unknown error occurred while trying to get songs.",
+        );
+      }
+    });
+  });
 };
 
 export const getSampleById = (id) => {
@@ -154,6 +170,36 @@ export const addSample = (sample) => {
     });
 };
 
+export const editSong = (id, song) => {
+  // return fetch(`${baseUrl}/${id}`, {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(song),
+  // });
+  return getToken().then((token) => {
+      return fetch(`${baseUrl}/${id}`, {
+          method: "PUT",
+          headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(song)
+      })
+          .then((res) => {
+              if (res.ok) {
+                  return res.json();
+              } else if (res.status === 401) {
+                  throw new Error("Unauthorized");
+              } else {
+                  throw new Error(
+                      "An unknown error occurred while trying to put post.",
+                  );
+              }
+          });
+  });
+}
 
 
 

@@ -78,6 +78,11 @@ namespace ThatsMySong.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Song song)
         {
+
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userProfile = _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
+
+            song.UserProfileId = userProfile.Id;
             if (id != song.Id)
             {
                 return BadRequest();
