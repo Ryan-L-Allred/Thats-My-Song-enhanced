@@ -9,6 +9,7 @@ namespace ThatsMySong.Repositories
         List<Song> GetAllSongs();
         Song GetSongById(int id);
         List<Song> GetAllHipHopSongs();
+        List<Song> GetAllSampledSongs();
         void AddSong(Song song);
         void UpdateSong(Song song);
         void DeleteSong(int id);
@@ -17,5 +18,6 @@ namespace ThatsMySong.Repositories
         void AddSample(Sample sample);
         void UpdateSample(Sample sample);
         void DeleteSample(int id);
+        List<Genre> GetAllGenres();
     }
 }

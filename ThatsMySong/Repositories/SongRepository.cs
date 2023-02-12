@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Data.SqlClient;
 using System.Runtime.InteropServices;
+using Azure;
 
 namespace ThatsMySong.Repositories
 {
@@ -130,6 +131,50 @@ namespace ThatsMySong.Repositories
                 }
             }
         }
+        public List<Song> GetAllSampledSongs()
+        {
+            using (var conn = Connection)
+            {
+
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT s.Id, s.Title, s.AlbumName, s.ArtistName, s.GenreId, s.UserProfileId,
+                               g.Name as GenreName
+	                    FROM Song s
+                        JOIN Genre g On s.GenreId = g.Id
+	                    WHERE  g.Name != 'Hip Hop'
+                        ORDER by Title";
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        var sampledSongs = new List<Song>();
+                        while (reader.Read())
+                        {
+                            var sampledSong = new Song()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                Title = reader.GetString(reader.GetOrdinal("Title")),
+                                AlbumName = reader.GetString(reader.GetOrdinal("AlbumName")),
+                                ArtistName = reader.GetString(reader.GetOrdinal("ArtistName")),
+                                GenreId = reader.GetInt32(reader.GetOrdinal("GenreId")),
+                                Genre = new Genre()
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("GenreId")),
+                                    Name = reader.GetString(reader.GetOrdinal("GenreName"))
+                                },
+                                UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId"))
+                            };
+                            sampledSongs.Add(sampledSong);
+                        }
+                        return sampledSongs;
+                    }
+                }
+            }
+        }
+    
 
         public void AddSong(Song song)
         {
@@ -399,6 +444,37 @@ namespace ThatsMySong.Repositories
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        public List<Genre> GetAllGenres()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, [Name]
+                           FROM Genre
+                          ORDER BY [Name]";
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var genres = new List<Genre>();
+                        while (reader.Read())
+                        {
+                            var genre = new Genre()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                            };
+                            genres.Add(genre);
+                        }
+
+                        return genres;
+                    }
                 }
             }
         }

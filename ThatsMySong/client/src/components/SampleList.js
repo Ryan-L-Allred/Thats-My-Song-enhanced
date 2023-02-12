@@ -18,7 +18,7 @@ const SampleList = () => {
 
     return (
         <div>
-            
+            <button onClick={() => navigate("/songs/addsample")}>Add Sample </button>
             {samples.map(sample => (
                 <Link to={`/songs/${sample.id}`}>
                 <div>{sample?.song?.title}</div>

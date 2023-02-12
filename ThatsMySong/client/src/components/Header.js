@@ -26,10 +26,32 @@ export default function Header({ isLoggedIn }) {
             {isLoggedIn &&
               <NavbarBrand>
                 <NavLink tag={RRNavLink} to="/">Home</NavLink>
-                
-              </NavbarBrand>
-
+             </NavbarBrand>
             }
+          </Nav>
+          <Nav className="mr-auto" navbar>
+            { /* When isLoggedIn === true, we will render the Home link */}
+            {isLoggedIn &&
+              <NavbarBrand>
+                <NavLink tag={RRNavLink} to="/songs">Samples</NavLink>
+              </NavbarBrand>
+              }
+          </Nav>
+          <Nav className="mr-auto" navbar>
+            { /* When isLoggedIn === true, we will render the Home link */}
+            {isLoggedIn &&
+              <NavbarBrand>
+                <NavLink tag={RRNavLink} to="/hiphopsongs">Hip Hop Songs</NavLink>
+              </NavbarBrand>
+              }
+          </Nav>
+          <Nav className="mr-auto" navbar>
+            { /* When isLoggedIn === true, we will render the Home link */}
+            {isLoggedIn &&
+              <NavbarBrand>
+                <NavLink tag={RRNavLink} to="/sampledsongs">Sampled Songs</NavLink>
+              </NavbarBrand>
+              }
           </Nav>
           <Nav navbar>
             {isLoggedIn &&
@@ -57,3 +79,4 @@ export default function Header({ isLoggedIn }) {
     </div>
   );
 }
+            
