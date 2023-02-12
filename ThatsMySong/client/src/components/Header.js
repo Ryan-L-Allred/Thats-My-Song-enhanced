@@ -33,7 +33,7 @@ export default function Header({ isLoggedIn }) {
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
               <NavbarBrand>
-                <NavLink tag={RRNavLink} to="/songs">Samples</NavLink>
+                <NavLink tag={RRNavLink} to="/samples">Samples</NavLink>
               </NavbarBrand>
               }
           </Nav>

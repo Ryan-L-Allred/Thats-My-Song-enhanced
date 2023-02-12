@@ -131,6 +131,7 @@ namespace ThatsMySong.Repositories
                 }
             }
         }
+
         public List<Song> GetAllSampledSongs()
         {
             using (var conn = Connection)
@@ -175,7 +176,6 @@ namespace ThatsMySong.Repositories
             }
         }
     
-
         public void AddSong(Song song)
         {
             using (var conn = Connection)
@@ -215,6 +215,7 @@ namespace ThatsMySong.Repositories
                                    UserProfileId = @UserProfileId
                              WHERE Id = @Id";
 
+                    cmd.Parameters.AddWithValue("@Id", song.Id);
                     cmd.Parameters.AddWithValue("@Title", song.Title);
                     cmd.Parameters.AddWithValue("@AlbumName", song.AlbumName);
                     cmd.Parameters.AddWithValue("@ArtistName", song.ArtistName);
@@ -234,7 +235,7 @@ namespace ThatsMySong.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Song WHERE Id = @Id";
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@Id", id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -390,6 +391,7 @@ namespace ThatsMySong.Repositories
                 }
             }
         }
+
         public void AddSample(Sample sample)
         {
             using (var conn = Connection)

@@ -48,7 +48,7 @@ useEffect(() => {
     evt.preventDefault();
 
     addSample(sample).then(() => {
-        navigate("/songs");
+        navigate("/samples");
     });
   };
 
