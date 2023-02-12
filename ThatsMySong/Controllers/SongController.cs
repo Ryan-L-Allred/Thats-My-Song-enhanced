@@ -37,6 +37,17 @@ namespace ThatsMySong.Controllers
             return Ok(_songRepo.GetAllHipHopSongs());
         }
 
+        [HttpGet("SampledSongs")]
+        public IActionResult GetSampledSongs()
+        {
+            return Ok(_songRepo.GetAllSampledSongs());
+        }
+
+        [HttpGet("Genres")]
+        public IActionResult GetGenres()
+        {
+            return Ok(_songRepo.GetAllGenres());
+        }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)

@@ -1,7 +1,9 @@
 import { getToken } from "./authManager";
 const baseUrl = '/api/song';
-const hipHopUrl = '/api/song/hiphopsongs'
+const hipHopUrl = '/api/song/hiphopsongs';
 const sampleUrl = '/api/song/sample';
+const sampledSongUrl = '/api/song/sampledsongs';
+const genreUrl = '/api/song/genres';
 
 export const getAllSongs = () => {
     return getToken().then((token) => {
@@ -41,9 +43,70 @@ export const getAllHipHopSongs = () => {
     });
 };
 
+export const getAllSampledSongs = () => {
+  return getToken().then((token) => {
+      return fetch(sampledSongUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        } else {
+          throw new Error(
+            "An unknown error occurred while trying to get songs.",
+          );
+        }
+      });
+    });
+};
+
+export const getAllSamples = () => {
+  return getToken().then((token) => {
+    return fetch(sampleUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error(
+          "An unknown error occurred while trying to get songs.",
+        );
+      }
+    });
+  });
+};
+
+export const getAllGenres = () => {
+  return getToken().then((token) => {
+    return fetch(genreUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      } else {
+        throw new Error(
+          "An unknown error occurred while trying to get songs.",
+        );
+      }
+    });
+  });
+};
+
 export const getSongById = (id) => {
     return fetch(`${baseUrl}/${id}`).then((res) => res.json());
-}
+};
+
+export const getSampleById = (id) => {
+  return fetch(`${sampleUrl}/${id}`).then((res) => res.json());
+};
 
 export const addSong = (song) => {
     return getToken().then((token) => {
@@ -68,25 +131,29 @@ export const addSong = (song) => {
       });
 };
 
-export const getAllSamples = () => {
+export const addSample = (sample) => {
   return getToken().then((token) => {
-    return fetch(sampleUrl, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((resp) => {
-      if (resp.ok) {
-        return resp.json();
-      } else {
-        throw new Error(
-          "An unknown error occurred while trying to get songs.",
-        );
-      }
+      return fetch(sampleUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sample),
+      }).then((resp) => {
+        if (resp.ok) {
+          return resp.json();
+        } else if (resp.status === 401) {
+          throw new Error("Unauthorized");
+        } else {
+          throw new Error(
+            "An unknown error occurred while trying to save a new song.",
+          );
+        }
+      });
     });
-  });
 };
 
-export const getSampleById = (id) => {
-  return fetch(`${sampleUrl}/${id}`).then((res) => res.json());
-}
+
+
+

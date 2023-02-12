@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addSong } from "../modules/songManager";
+import { getAllGenres } from '../modules/songManager';
 
 const SongForm = ({ getSongs }) => {
   const emptySong = {
@@ -10,8 +11,17 @@ const SongForm = ({ getSongs }) => {
     artistName: '',
     genreId: 1
   };
-
   const [song, setSong] = useState(emptySong);
+
+  const [genres, setGenres] = useState([]);
+  const getGenres = () => {
+        getAllGenres().then(genres => setGenres(genres));
+    };
+  
+    useEffect(() => {
+        getGenres();
+    }, []);
+
 
   const navigate = useNavigate()
 
@@ -29,9 +39,13 @@ const SongForm = ({ getSongs }) => {
     evt.preventDefault();
 
     addSong(song).then(() => {
-      // setTag(emptyTag);
-      // getTags();
-      navigate("/songs")
+      
+      if (song.genreId == 1) {
+        navigate("/hiphopsongs")
+      } else {
+        navigate("/sampledsongs")
+      }
+      
     });
   };
 
@@ -57,9 +71,26 @@ const SongForm = ({ getSongs }) => {
       </FormGroup>
       <FormGroup>
         <Label for="genre">Genre</Label>
-        <Input type="text" name="genre" id="genre" placeholder="Genre"
-          value={song.genreId}
-          onChange={handleInputChange} />
+        <select
+            className="genre-box"
+            id="genre-select"
+            onChange={
+              (evt) => {
+                const copy = { ...song }
+                copy.genreId = evt.target.value
+                setSong(copy)
+              }}
+            >
+            <option value="0">Select Genre</option>
+            {genres.map((genre) => {
+              return (
+                <option key={genre.id}
+                        value={genre.id}>
+                        {genre.name}
+                        </option>
+              )
+            })}
+        </select>
       </FormGroup>
       <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
     </Form>

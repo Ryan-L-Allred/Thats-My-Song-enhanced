@@ -21,9 +21,9 @@ const HipHopSongList = () => {
             <button onClick={() => navigate("/songs/add")}>Add Song </button>
             
             {hipHopSongs.map(hipHopSong => (
-                <Link to={`/songs/${hipHopSong.id}`}>
+                // <Link to={`/songs/${hipHopSong.id}`}>
                 <div>{hipHopSong.title}</div>
-                </Link>
+                // {/* </Link> */}
             ))}
             
         </div>
