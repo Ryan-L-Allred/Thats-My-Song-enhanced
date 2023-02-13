@@ -267,7 +267,7 @@ namespace ThatsMySong.Repositories
 	                                  JOIN Genre g ON s.GenreId = g.Id
 	                                  JOIN Song ss ON sa.SampledSongId = ss.Id
 	                                  JOIN Genre gg ON ss.GenreId = gg.Id
-                                      ";
+                                      ORDER BY SongTitle";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

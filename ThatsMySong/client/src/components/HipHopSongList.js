@@ -26,9 +26,6 @@ const HipHopSongList = () => {
                 <Link to={`/hiphopsongs/${hipHopSong.id}`}>
                 <div>{hipHopSong.title}</div>
                 </Link>
-                
-                <button onClick={() => navigate(`/hiphopsongs/${hipHopSong.id}/edit`)}>Edit Song </button>
-                
             </div>
             ))}
             

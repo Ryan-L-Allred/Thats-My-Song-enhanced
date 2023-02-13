@@ -11,22 +11,20 @@ import SampledSongList from "./SampledSongList";
 import SampleForm from "./SampleForm";
 import SongEdit from "./SongEdit";
 import HipHopSongDetails from "./HipHopSongDetails";
-//import SampleList from "./SampleList";
+import SampleEdit from "./SampleEdit";
+import SampledSongDetails from "./SampledSongDetails";
+
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
       <Routes>
         <Route path="/">
-          {/* <Route path="tags">
-            <Route index element={<TagList/>}/>
-          </Route> */}
           <Route path="samples">
             <Route index element={<SampleList/>} />
             <Route path=":id" element={<SampleDetails/>} />
-            
-            {/* <Route path=":id/edit" element={<SongEdit />} /> */}
             <Route path="addsample" element={<SampleForm />} />
+            <Route path=":id/edit" element={<SampleEdit />} />
           </Route>
           <Route path="hiphopsongs">
              <Route index element={<HipHopSongList/>}/>
@@ -36,6 +34,7 @@ export default function ApplicationViews({ isLoggedIn }) {
             </Route> 
           <Route path="sampledsongs"> 
           <Route index element={<SampledSongList/>} />
+          <Route path=":id" element={<SampledSongDetails/>} />
           <Route path="add" element={<SongForm/>} />
           <Route path=":id/edit" element={<SongEdit />} />
           </Route>
