@@ -2,9 +2,19 @@ import React from "react";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
+import { deleteSample } from "../modules/songManager";
+import { getAllSamples } from "../modules/songManager";
 
 const Sample = ({ sample }) => {
    const navigate = useNavigate();
+    const confirmDelete = () => {
+        deleteSample(sample.id).then(getAllSamples)
+        .then(() => {
+            navigate("/samples")
+        })
+    }
+
+
     return (
         <Card >
             <CardBody>
@@ -23,6 +33,7 @@ const Sample = ({ sample }) => {
                     <li><b>Genre: </b>{sample?.sampledSong?.genre?.name}</li>
                 </ul>
                 <button onClick={() => navigate(`/samples/${sample.id}/edit`)}>Edit Sample </button>
+                 <button onClick={confirmDelete}>Delete Sample</button>
             </CardBody>
         </Card>
     );

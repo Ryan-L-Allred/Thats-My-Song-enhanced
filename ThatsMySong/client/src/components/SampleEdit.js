@@ -46,7 +46,7 @@ const SampleEdit = () => {
             songId: sampleSelect.songId,
             sampledSongId: sampleSelect.sampledSongId
         }
-
+        
         return editSample(sampleSelect.id, sampleToSendToAPI).then(() => {
                 navigate("/samples")
             });

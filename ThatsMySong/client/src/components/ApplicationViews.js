@@ -12,6 +12,7 @@ import SampleForm from "./SampleForm";
 import SongEdit from "./SongEdit";
 import HipHopSongDetails from "./HipHopSongDetails";
 import SampleEdit from "./SampleEdit";
+import SampledSongDetails from "./SampledSongDetails";
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -33,6 +34,7 @@ export default function ApplicationViews({ isLoggedIn }) {
             </Route> 
           <Route path="sampledsongs"> 
           <Route index element={<SampledSongList/>} />
+          <Route path=":id" element={<SampledSongDetails/>} />
           <Route path="add" element={<SongForm/>} />
           <Route path=":id/edit" element={<SongEdit />} />
           </Route>
