@@ -32,6 +32,7 @@ const SampleDetails = () => {
         <div>
             <Sample sample={sample}  />
             {/* <Song song={song} /> */}
+            
         </div>
    );
 };

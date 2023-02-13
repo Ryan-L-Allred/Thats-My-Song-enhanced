@@ -1,8 +1,10 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Song = ({ song }) => {
+    const navigate = useNavigate();
     return (
         <Card >
             <CardBody>
@@ -13,6 +15,7 @@ const Song = ({ song }) => {
                     <li><b>Artist: </b>{song.artistName}</li>
                     <li><b>Genre: </b>{song?.genre?.name}</li>
                 </ul>
+                <button onClick={() => navigate(`/hiphopsongs/${song.id}/edit`)}>Edit Song </button>
             </CardBody>
         </Card>
     );

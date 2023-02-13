@@ -1,8 +1,10 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Sample = ({ sample }) => {
+   const navigate = useNavigate();
     return (
         <Card >
             <CardBody>
@@ -20,6 +22,7 @@ const Sample = ({ sample }) => {
                     <li><b>Artist: </b>{sample?.sampledSong?.artistName}</li>
                     <li><b>Genre: </b>{sample?.sampledSong?.genre?.name}</li>
                 </ul>
+                <button onClick={() => navigate(`/samples/${sample.id}/edit`)}>Edit Sample </button>
             </CardBody>
         </Card>
     );
