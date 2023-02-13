@@ -248,5 +248,14 @@ export const editSample = (id, Sample) => {
   });
 }
 
-
+export const deleteSample = (id) => {
+  return getToken().then(token => {
+    return fetch(`${sampleUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+})
+}
 

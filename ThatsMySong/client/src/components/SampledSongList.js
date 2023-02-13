@@ -12,20 +12,21 @@ const SampledSongList = () => {
         getAllSampledSongs().then(sampledSongs => setSampledSongs(sampledSongs));
     };
 
+
     useEffect(() => {
         getSampledSongs();
     }, []);
 
+
     return (
         <div>
-            <button onClick={() => navigate("/songs/add")}>Add Song </button>
+            <button onClick={() => navigate("/sampledsongs/add")}>Add Song </button>
             
             {sampledSongs.map(sampledSong => (
                 <div>
-                {/* // <Link to={`/songs/${sampledSong.id}`}> */}
+                 <Link to={`/sampledsongs/${sampledSong.id}`}>
                 <div>{sampledSong.title}</div>
-                 {/* </Link> */}
-                <button onClick={() => navigate(`/sampledsongs/${sampledSong.id}/edit`)}>Edit Song </button>
+                 </Link>
                 </div>
             ))}
             

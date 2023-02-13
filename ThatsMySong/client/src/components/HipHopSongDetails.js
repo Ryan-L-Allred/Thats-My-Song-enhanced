@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSampleById } from "../modules/songManager";
 import { getSongById } from "../modules/songManager";
-import { HipHopSong } from "./HipHopSong";
 import  Song  from "./Song";
 import Sample from "./Sample"
 
