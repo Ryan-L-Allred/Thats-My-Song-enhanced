@@ -217,6 +217,8 @@ export const editSong = (id, song) => {
   });
 }
 
+
+
 export const editSample = (id, Sample) => {
   // return fetch(`${baseUrl}/${id}`, {
   //   method: "PUT",
@@ -246,6 +248,17 @@ export const editSample = (id, Sample) => {
               }
           });
   });
+}
+
+export const deleteSong = (id) => {
+  return getToken().then(token => {
+    return fetch(`${baseUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+  })
 }
 
 export const deleteSample = (id) => {
