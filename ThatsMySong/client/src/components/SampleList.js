@@ -29,12 +29,12 @@ const SampleList = () => {
         <div>
             <button onClick={() => navigate("/samples/addsample")}>Add Sample </button>
             {samples.map(sample => (
-                <div>
+                <section key={sample.id} className="sampleList">
                 <Link to={`/samples/${sample.id}`}>
                 <div>{sample?.song?.title}</div>
                 </Link>
                 {/* <button onClick={handleSave}>Delete Sample</button> */}
-                </div>
+                </section>
             ))}
             
         </div>
