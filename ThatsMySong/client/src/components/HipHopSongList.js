@@ -22,11 +22,11 @@ const HipHopSongList = () => {
             
             {hipHopSongs.map(hipHopSong => (
                 
-            <div>
+            <section key={hipHopSong.id} className="hipHopSonList">
                 <Link to={`/hiphopsongs/${hipHopSong.id}`}>
                 <div>{hipHopSong.title}</div>
                 </Link>
-            </div>
+            </section>
             ))}
             
         </div>

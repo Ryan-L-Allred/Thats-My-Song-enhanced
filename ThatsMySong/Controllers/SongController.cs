@@ -24,31 +24,35 @@ namespace ThatsMySong.Controllers
             _userProfileRepo= userProfileRepo;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_songRepo.GetAllSongs());
         }
 
+        [Authorize]
         [HttpGet("HipHopSongs")]
         public IActionResult GetHipHopSongs()
         {
             return Ok(_songRepo.GetAllHipHopSongs());
         }
 
+        [Authorize]
         [HttpGet("SampledSongs")]
         public IActionResult GetSampledSongs()
         {
             return Ok(_songRepo.GetAllSampledSongs());
         }
 
+        [Authorize]
         [HttpGet("Genres")]
         public IActionResult GetGenres()
         {
             return Ok(_songRepo.GetAllGenres());
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -60,7 +64,7 @@ namespace ThatsMySong.Controllers
             return Ok(song);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Song song)
         {
@@ -74,7 +78,7 @@ namespace ThatsMySong.Controllers
 
 
 
-       // [Authorize]
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Song song)
         {
@@ -92,7 +96,7 @@ namespace ThatsMySong.Controllers
             return NoContent();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -101,13 +105,14 @@ namespace ThatsMySong.Controllers
         }
 
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("Sample")]
         public IActionResult GetSample()
         {
             return Ok(_songRepo.GetAllSamples());
         }
 
+        [Authorize]
         [HttpGet("Sample/{id}")]
         public IActionResult GetSampleId(int id)
         {
@@ -119,7 +124,7 @@ namespace ThatsMySong.Controllers
             return Ok(sample);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("Sample")]
         public IActionResult Post(Sample sample)
         {
@@ -131,7 +136,7 @@ namespace ThatsMySong.Controllers
             return CreatedAtAction("Get", new { id = sample.Id }, sample);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut("Sample/{id}")]
         public IActionResult Put(int id, Sample sample)
         {
@@ -144,7 +149,7 @@ namespace ThatsMySong.Controllers
             return NoContent();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("Sample/{id}")]
         public IActionResult DeleteSample(int id)
         {

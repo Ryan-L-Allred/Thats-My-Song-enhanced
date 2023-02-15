@@ -234,7 +234,8 @@ namespace ThatsMySong.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Song WHERE Id = @Id";
+                    cmd.CommandText = "DELETE FROM Sample WHERE SampledSongId = @Id " +
+                                       "DELETE FROM Song WHERE Id = @Id";
                     cmd.Parameters.AddWithValue("@Id", id);
 
                     cmd.ExecuteNonQuery();
