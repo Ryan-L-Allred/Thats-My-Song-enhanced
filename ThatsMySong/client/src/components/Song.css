@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.songTitle {
+    font-family: 'Permanent Marker';
+    font-size: 50px;
+    color: orange
+}
+
+.songDetails {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker';
+    font-size: 30px;
+    color: orange;
+    background-color: purple;
+}
+
+b {
+    color: black
+}
+
+.btn_edit {
+    padding: 5px 5px;
+    font-size: 19px;
+    font-family: 'Permanent Marker';
+    border-radius: 15px;
+    width:8%;
+    background-color: orange;
+}
+
+.btn_delete {
+    padding: 5px 5px;
+    font-size: 19px;
+    font-family: 'Permanent Marker';
+    border-radius: 15px;
+    width:8%;
+    background-color:orange;
+}
+
+.text-center {
+    background-color: purple;
+}

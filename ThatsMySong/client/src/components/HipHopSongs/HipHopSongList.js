@@ -1,8 +1,9 @@
 import React, { useEffect,  useState } from "react";
-import { getAllHipHopSongs } from "../modules/songManager";
+import { getAllHipHopSongs } from "../../modules/songManager";
 import { Link } from "react-router-dom";
-import  Song  from "./Song";
+import { Card, CardBody } from "reactstrap";
 import { Navigate, useNavigate } from "react-router-dom";
+import "./HipHopSongList.css"
 
 const HipHopSongList = () => {
     const [hipHopSongs, setHipHopSongs] = useState([]);
@@ -17,19 +18,24 @@ const HipHopSongList = () => {
     }, []);
 
     return (
-        <div>
-            <button onClick={() => navigate("/hiphopsongs/add")}>Add Song </button>
-            
+
+       //<Card >
+        //<CardBody>
+            <section>
+                <div class="col-md-12 text-center">
+                    <button class="btn-xl" onClick={() => navigate("/hiphopsongs/add")}>Add Song </button>
+                </div>
             {hipHopSongs.map(hipHopSong => (
-                
-            <section key={hipHopSong.id} className="hipHopSonList">
+                <section key={hipHopSong.id} class="text-center">
                 <Link to={`/hiphopsongs/${hipHopSong.id}`}>
-                <div>{hipHopSong.title}</div>
+                <div class="hiphopsongList">{hipHopSong.title}</div>
                 </Link>
             </section>
             ))}
-            
-        </div>
+            </section>
+
+        //     </CardBody>
+        // </Card>
     );
 }
 

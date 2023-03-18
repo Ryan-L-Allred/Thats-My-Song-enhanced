@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { getSampleById, editSample, getAllHipHopSongs, getAllSampledSongs } from '../modules/songManager';
+import { getSampleById, editSample, getAllHipHopSongs, getAllSampledSongs } from '../../modules/songManager';
 
 const SampleEdit = () => {
     const emptySample = {

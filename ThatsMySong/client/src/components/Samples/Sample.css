@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.sampledSongs {
+    padding: 40px 5px;
+}
+
+.hipHopSongTitle {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker';
+    font-size: 45px;
+    color: orange;
+}
+
+.sampledSongTitle {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker';
+    font-size: 45px;
+    color: orange;
+}
+
+.hipHopSongDetails {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker';
+    font-size: 25px;
+    color: orange;
+}
+
+.sampledSongDetails {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker';
+    font-size: 25px;
+    color: orange;
+}

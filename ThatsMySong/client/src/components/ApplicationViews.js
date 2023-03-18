@@ -3,16 +3,16 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
-import SampleList from "./SampleList";
-import SampleDetails from "./SampleDetails";
+import SampleList from "./Samples/SampleList";
+import SampleDetails from "./Samples/SampleDetails";
 import SongForm from "./SongForm";
-import HipHopSongList from "./HipHopSongList";
-import SampledSongList from "./SampledSongList";
-import SampleForm from "./SampleForm";
+import HipHopSongList  from "./HipHopSongs/HipHopSongList";
+import SampledSongList from "./SampledSongs/SampledSongList";
+import SampleForm from "./Samples/SampleForm";
 import SongEdit from "./SongEdit";
-import HipHopSongDetails from "./HipHopSongDetails";
-import SampleEdit from "./SampleEdit";
-import SampledSongDetails from "./SampledSongDetails";
+import HipHopSongDetails   from "./HipHopSongs/HipHopSongDetails";
+import SampleEdit from "./Samples/SampleEdit";
+import SampledSongDetails from "./SampledSongs/SampledSongDetails";
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -38,9 +38,9 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="add" element={<SongForm/>} />
           <Route path=":id/edit" element={<SongEdit />} />
           </Route>
-          <Route
+          {/* <Route
             index
-            element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/>
+            element={isLoggedIn ? <Hello /> : <Navigate to="/login" />}/> */}
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />

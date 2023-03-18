@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { getSongById } from "../modules/songManager";
-import  Song  from "./Song";
-
+import { getSongById } from "../../modules/songManager";
+import  Song  from "../Song";
+import { Card, CardBody } from "reactstrap";
 
 const SampledSongDetails = () => {
     const [sampledSong, setSampledSong] = useState();

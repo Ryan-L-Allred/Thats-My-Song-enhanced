@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addSong } from "../modules/songManager";
 import { getAllGenres } from '../modules/songManager';
+import { Card, CardBody } from "reactstrap";
+import './SongForm.css';
 
 const SongForm = ({ getSongs }) => {
   const emptySong = {
@@ -53,25 +55,25 @@ const SongForm = ({ getSongs }) => {
   return (
     <Form>
       <FormGroup>
-        <Label for="title">Title</Label>
+        <div class="Title" for="title">Title</div>
         <Input type="text" name="title" id="title" placeholder="Song Title"
           value={song.title}
           onChange={handleInputChange} />
       </FormGroup>
       <FormGroup>
-        <Label for="albumName">Album</Label>
+        <div for="albumName">Album</div>
         <Input type="text" name="albumName" id="albumName" placeholder="Album Name"
           value={song.albumName}
           onChange={handleInputChange} />
       </FormGroup>
       <FormGroup>
-        <Label for="artistName">Artist</Label>
+        <div for="artistName">Artist</div>
         <Input type="text" name="artistName" id="artistName" placeholder="Artist Name"
           value={song.artistName}
           onChange={handleInputChange} />
       </FormGroup>
       <FormGroup>
-        <Label for="genre">Genre</Label>
+        <div for="genre">Genre</div>
         <select
             className="genre-box"
             id="genre-select"

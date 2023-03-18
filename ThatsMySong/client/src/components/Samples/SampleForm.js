@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { addSample } from "../modules/songManager";
-import { getAllSongs } from "../modules/songManager";
-import { getAllHipHopSongs } from '../modules/songManager';
-import { getAllSampledSongs } from '../modules/songManager';
+import { addSample } from "../../modules/songManager";
+import { getAllHipHopSongs } from '../../modules/songManager';
+import { getAllSampledSongs } from '../../modules/songManager';
+import { Card, CardBody } from "reactstrap";
 
 const SampleForm = ({ getSamples }) => {
   const emptySample = {
@@ -53,6 +53,8 @@ useEffect(() => {
   };
 
   return (
+  <Card>
+    <CardBody>
     <Form>
       <FormGroup>
         <Label for="title">Hip Hop Song</Label>
@@ -110,6 +112,8 @@ useEffect(() => {
       </FormGroup> */}
       <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
     </Form>
+    </CardBody>
+  </Card>
   );
 };
 
