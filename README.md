@@ -21,3 +21,14 @@ For authentication I utilized Google Firebase. The code involving authentication
 
 If I had more time, I would actually go back and refactor my many-to-many relationship between the different songs in order to prevent future issues. Instead of having the songs from every genre on one table, I would create a table strictly for hip hop songs and another table strictly for sampled songs, both of which would be connected by a join table. To avoid redundancy, I would also set up separate tables for albums and artists as well. I believe this would have provided more flexibility with how the data would interact with each other and it would improve the overall user experience.   
 
+## Installations
+
+You will need to have SQL Server installed to run this application. You will also need to setup your own Firebase project to use with this application as well.
+
+After cloning the repository, run the SQL create script found in ThatsMySong/SQL and then run the seed script.
+
+After setting up your database, you will need to change some files. First, in appsettings.json, make sure your default connection string is set up to connect to your database. Then add your Firebase project ID. Then navigate to the client directory and make sure you have a file named .env with the Web API key for your Firebase project.
+
+After this, navigate to the ThatsMySong/ThatsMySong/client directory in your terminal. Run the command "npm install".
+
+With all of this setup out of the way, run the server in Visual Studio, and then run the react app using "npm start".
