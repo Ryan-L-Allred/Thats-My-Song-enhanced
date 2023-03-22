@@ -15,7 +15,7 @@ For authentication I utilized Google Firebase. The code involving authentication
 
 ## ERD
 
-<img src="That'sMySong.png" width="70% />
+<img src="That'sMySong.png" width="70%" />
 
 ## Optimization
 
