@@ -31,7 +31,8 @@ namespace ThatsMySong
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<ISongRepository, SongRepository>();
-            
+            services.AddTransient<ISampledSongRepository, SampledSongRepository>();
+
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
