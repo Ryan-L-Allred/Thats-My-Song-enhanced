@@ -21,27 +21,58 @@ insert into [Genre] (Id, [Name]) values (5, 'R&B');
 insert into [Genre] (Id, [Name]) values (6, 'Soul');
 set identity_insert [Genre] off
 
-set identity_insert [Song] on
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (1, 'Electric Relaxation', 'Midnight Marauders', 'A Tribe Called Quest', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (2, 'Mystic Brew', 'Two-Headed Freap', 'Ronnie Foster', 2, 2);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (3, 'Jagger the Dagger', 'Headless Heroes of the Apocalypse', 'Eugene McDaniels', 6, 2);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (4, 'Black Sunday', 'Stress: The Extinction Agenda', 'Organized Konfusion', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (5, 'Nowhere to Run, Nowhere to Hide', '6 Feet Deep', 'Gravediggaz', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (6, 'Peg', 'Aja', 'Steely Dan', 4, 3);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (7, '(Sittin On)the Dock of the Bay', 'The Dock of the Bay', 'Otis Redding', 6, 2);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (8, 'Eye Know' , '3 Feet High and Rising', 'De La Soul', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (9, 'We Live in Brooklyn, Baby', 'He''s Coming', 'Roy Ayers Ubiquity', 3, 3);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (10, 'Brooklyn', 'Black on Both Sides', 'Mos Def', 1, 1);
-insert into [Song] (Id, Title, AlbumName, ArtistName, GenreId, UserProfileId) values (11, 'Borough Check', 'Blowout Comb', 'Digable Planets', 1, 1);
-set identity_insert [Song] off
+set identity_insert [Artist] on
+insert into [Artist] (Id, [Name]) values (1, 'A Tribe Called Quest');
+insert into [Artist] (Id, [Name]) values (2, 'Ronnie Foster');
+insert into [Artist] (Id, [Name]) values (3, 'Eugene McDaniels');
+insert into [Artist] (Id, [Name]) values (4, 'Organized Konfusion');
+insert into [Artist] (Id, [Name]) values (5, 'Gravediggaz');
+insert into [Artist] (Id, [Name]) values (6, 'Steely Dan');
+insert into [Artist] (Id, [Name]) values (7, 'Otis Redding');
+insert into [Artist] (Id, [Name]) values (8, 'De La Soul');
+insert into [Artist] (Id, [Name]) values (9, 'Roy Ayers Ubiquity');
+insert into [Artist] (Id, [Name]) values (10, 'Mos Def');
+insert into [Artist] (Id, [Name]) values (11, 'Digable Planets');
+set identity_insert [Artist] off
+
+set identity_insert [Album] on
+insert into [Album] (Id, Title, ArtistId, GenreId) values (1, 'Blowout Comb', 11, 1);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (2, 'Black on Both Sides', 10, 1);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (3, 'He''s Coming', 9, 3);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (4, 'Midnight Marauders', 1, 1);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (5, 'The Dock of the Bay', 7, 6);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (6, 'Headless Heroes of the Apocalypse', 3, 6);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (7, '3 Feet High and Rising', 8, 1);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (8, 'Aja', 6, 4);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (9, 'Stress: the Extinction Agenda', 5, 1);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (10, 'Two-Headed Freap', 2, 2);
+insert into [Album] (Id, Title, ArtistId, GenreId) values (11, '6 Feet Deep', 5, 1);
+set identity_insert [Album] off
+
+set identity_insert [HipHopSong] on
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (1, 'Electric Relaxation', 4, 1, 1, 1);
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (2, 'Black Sunday', 9, 4, 1, 1);
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (3, 'Nowhere to Run, Nowhere to Hide', 11, 5, 1, 1);
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (4, 'Eye Know' , 7, 8, 1, 1);
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (5, 'Brooklyn', 2, 10, 1, 1);
+insert into [HipHopSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (6, 'Borough Check', 1, 11, 1, 1);
+set identity_insert [HipHopSong] off
+
+set identity_insert [SampledSong] on
+insert into [SampledSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (1, 'Mystic Brew', 10, 2, 2, 2);
+insert into [SampledSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (2, 'Jagger the Dagger', 6, 3, 6, 2);
+insert into [SampledSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (3, 'Peg', 8, 6, 4, 3);
+insert into [SampledSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (4, '(Sittin On)the Dock of the Bay', 5, 7, 6, 2);
+insert into [SampledSong] (Id, Title, AlbumId, ArtistId, GenreId, UserProfileId) values (5, 'We Live in Brooklyn, Baby', 3, 9, 3, 3);
+set identity_insert [SampledSong] off
 
 set identity_insert [Sample] on
-insert into [Sample] (Id, SongId, SampledSongId) values (1, 1, 2);
-insert into [Sample] (Id, SongId, SampledSongId) values (2, 4, 3);
-insert into [Sample] (Id, SongId, SampledSongId) values (3, 5, 3);
-insert into [Sample] (Id, SongId, SampledSongId) values (4, 8, 6);
-insert into [Sample] (Id, SongId, SampledSongId) values (5, 8, 7);
-insert into [Sample] (Id, SongId, SampledSongId) values (6, 10, 9);
-insert into [Sample] (Id, SongId, SampledSongId) values (7, 11, 9);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (1, 1, 1);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (2, 2, 2);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (3, 3, 2);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (4, 4, 3);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (5, 4, 4);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (6, 5, 5);
+insert into [Sample] (Id, HipHopSongId, SampledSongId) values (7, 6, 5);
 set identity_insert [Sample] off
 

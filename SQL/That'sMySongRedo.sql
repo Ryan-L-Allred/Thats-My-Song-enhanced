@@ -1,3 +1,22 @@
+ USE [master]
+
+IF db_id('ThatsMySong') IS NULL
+	CREATE DATABASE [ThatsMySong]
+GO
+
+USE [ThatsMySong]
+GO
+
+DROP TABLE IF EXISTS [Sample];
+DROP TABLE IF EXISTS [HipHopSong];
+DROP TABLE IF EXISTS [SampledSong];
+DROP TABLE IF EXISTS [Album];
+DROP TABLE IF EXISTS [Artist];
+DROP TABLE IF EXISTS [Genre];
+DROP TABLE IF EXISTS [UserProfile];
+DROP TABLE IF EXISTS [UserType];
+GO
+
 CREATE TABLE [UserType] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Name] nvarchar(255) NOT NULL
@@ -7,6 +26,7 @@ GO
 CREATE TABLE [UserProfile] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Name] nvarchar(255) NOT NULL,
+  [Email] nvarchar(255) NOT NULL,
   [UserTypeId] int NOT NULL,
   [FirebaseUserId] nvarchar(255) UNIQUE NOT NULL
 )
