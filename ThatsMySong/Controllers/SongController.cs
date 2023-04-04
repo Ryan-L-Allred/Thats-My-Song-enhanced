@@ -66,7 +66,7 @@ namespace ThatsMySong.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Post(Song song)
+        public IActionResult Post(HipHopSong song)
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var userProfile = _userProfileRepo.GetByFirebaseUserId(firebaseUserId);
@@ -80,7 +80,7 @@ namespace ThatsMySong.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Song song)
+        public IActionResult Put(int id, HipHopSong song)
         {
 
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

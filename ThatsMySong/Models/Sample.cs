@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public int SongId { get; set; }
-        public Song Song { get; set; }
+        public HipHopSong Song { get; set; }
         public int SampledSongId { get; set; }
-        public Song SampledSong { get; set; }
+        public HipHopSong SampledSong { get; set; }
         //public int UserProfileId { get; set; }
     }
 }

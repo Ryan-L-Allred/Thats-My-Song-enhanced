@@ -12,7 +12,7 @@ namespace ThatsMySong.Repositories
     {
         public SongRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<Song> GetAllSongs()
+        public List<HipHopSong> GetAllSongs()
         {
             using (var conn = Connection)
             {
@@ -29,10 +29,10 @@ namespace ThatsMySong.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
 
-                        var songs = new List<Song>();
+                        var songs = new List<HipHopSong>();
                         while (reader.Read())
                         {
-                            var song = new Song()
+                            var song = new HipHopSong()
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
@@ -54,7 +54,7 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public Song GetSongById(int id)
+        public HipHopSong GetSongById(int id)
         {
             using (var conn = Connection)
             {
@@ -71,10 +71,10 @@ namespace ThatsMySong.Repositories
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Song song = null;
+                        HipHopSong song = null;
                         if (reader.Read())
                         {
-                            song = new Song()
+                            song = new HipHopSong()
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
@@ -95,7 +95,7 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public List<Song> GetAllHipHopSongs()
+        public List<HipHopSong> GetAllHipHopSongs()
         {
             using (var conn = Connection)
             {
@@ -112,10 +112,10 @@ namespace ThatsMySong.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
 
-                        var hipHopSongs = new List<Song>();
+                        var hipHopSongs = new List<HipHopSong>();
                         while (reader.Read())
                         {
-                            var hipHopSong = new Song()
+                            var hipHopSong = new HipHopSong()
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
@@ -132,7 +132,7 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public List<Song> GetAllSampledSongs()
+        public List<HipHopSong> GetAllSampledSongs()
         {
             using (var conn = Connection)
             {
@@ -151,10 +151,10 @@ namespace ThatsMySong.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
 
-                        var sampledSongs = new List<Song>();
+                        var sampledSongs = new List<HipHopSong>();
                         while (reader.Read())
                         {
-                            var sampledSong = new Song()
+                            var sampledSong = new HipHopSong()
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
@@ -176,7 +176,7 @@ namespace ThatsMySong.Repositories
             }
         }
     
-        public void AddSong(Song song)
+        public void AddSong(HipHopSong song)
         {
             using (var conn = Connection)
             {
@@ -198,7 +198,7 @@ namespace ThatsMySong.Repositories
             }
         }
 
-        public void UpdateSong(Song song)
+        public void UpdateSong(HipHopSong song)
         {
             using (var conn = Connection)
             {
@@ -279,7 +279,7 @@ namespace ThatsMySong.Repositories
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 SongId = reader.GetInt32(reader.GetOrdinal("SongId")),
-                                Song = new Song()
+                                Song = new HipHopSong()
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("SongId")),
                                     Title = reader.GetString(reader.GetOrdinal("SongTitle")),
@@ -294,7 +294,7 @@ namespace ThatsMySong.Repositories
                                     UserProfileId = reader.GetInt32(reader.GetOrdinal("SongUserProfileId"))
                                 },
                                 SampledSongId = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
-                                SampledSong = new Song()
+                                SampledSong = new HipHopSong()
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
                                     Title = reader.GetString(reader.GetOrdinal("SampleTitle")),
@@ -356,7 +356,7 @@ namespace ThatsMySong.Repositories
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 SongId = reader.GetInt32(reader.GetOrdinal("SongId")),
-                                Song = new Song()
+                                Song = new HipHopSong()
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("SongId")),
                                     Title = reader.GetString(reader.GetOrdinal("SongTitle")),
@@ -371,7 +371,7 @@ namespace ThatsMySong.Repositories
                                     UserProfileId = reader.GetInt32(reader.GetOrdinal("SongUserProfileId"))
                                 },
                                 SampledSongId = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
-                                SampledSong = new Song()
+                                SampledSong = new HipHopSong()
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("SampledSongId")),
                                     Title = reader.GetString(reader.GetOrdinal("SampleTitle")),

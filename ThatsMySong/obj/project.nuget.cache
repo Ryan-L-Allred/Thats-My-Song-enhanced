@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2a1CbGf8vFt1SS9pwn3gQoj8+PTgh3gpfyZKZiKsJXyx3bG6RsgO8tv4EEP+cvUXMHfhxEjhUWbP7owujBdH0g==",
+  "dgSpecHash": "xLCtwAA7fPifDBQy8/KmNKVIsSNE0ncAbA3GaJdz6YZbryEf+soDpYtC6OZi0xWEehLHhZ60lrbcUmyNdJTypQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ryana\\workspace\\ThatsMySong\\ThatsMySong\\ThatsMySong.csproj",
+  "projectFilePath": "C:\\Users\\ryana\\workspace\\ThatsMySongEnhanced\\ThatsMySong\\ThatsMySong.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ryana\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ryana\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

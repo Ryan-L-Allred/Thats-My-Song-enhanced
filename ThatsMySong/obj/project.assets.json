@@ -2698,11 +2698,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ryana\\workspace\\ThatsMySong\\ThatsMySong\\ThatsMySong.csproj",
+      "projectUniqueName": "C:\\Users\\ryana\\workspace\\ThatsMySongEnhanced\\ThatsMySong\\ThatsMySong.csproj",
       "projectName": "ThatsMySong",
-      "projectPath": "C:\\Users\\ryana\\workspace\\ThatsMySong\\ThatsMySong\\ThatsMySong.csproj",
+      "projectPath": "C:\\Users\\ryana\\workspace\\ThatsMySongEnhanced\\ThatsMySong\\ThatsMySong.csproj",
       "packagesPath": "C:\\Users\\ryana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ryana\\workspace\\ThatsMySong\\ThatsMySong\\obj\\",
+      "outputPath": "C:\\Users\\ryana\\workspace\\ThatsMySongEnhanced\\ThatsMySong\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ryana\\AppData\\Roaming\\NuGet\\NuGet.Config",

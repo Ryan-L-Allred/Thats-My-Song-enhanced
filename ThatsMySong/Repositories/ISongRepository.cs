@@ -6,12 +6,12 @@ namespace ThatsMySong.Repositories
 {
     public interface ISongRepository
     {
-        List<Song> GetAllSongs();
-        Song GetSongById(int id);
-        List<Song> GetAllHipHopSongs();
-        List<Song> GetAllSampledSongs();
-        void AddSong(Song song);
-        void UpdateSong(Song song);
+        List<HipHopSong> GetAllSongs();
+        HipHopSong GetSongById(int id);
+        List<HipHopSong> GetAllHipHopSongs();
+        List<HipHopSong> GetAllSampledSongs();
+        void AddSong(HipHopSong song);
+        void UpdateSong(HipHopSong song);
         void DeleteSong(int id);
         List<Sample> GetAllSamples();
         Sample GetSampleById(int id);
