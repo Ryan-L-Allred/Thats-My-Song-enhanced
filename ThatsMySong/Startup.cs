@@ -30,8 +30,9 @@ namespace ThatsMySong
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
-            services.AddTransient<ISongRepository, SongRepository>();
+            //services.AddTransient<ISongRepository, SongRepository>();
             services.AddTransient<ISampledSongRepository, SampledSongRepository>();
+            services.AddTransient<IHipHopSongRepository, HipHopSongRepository>();
 
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");

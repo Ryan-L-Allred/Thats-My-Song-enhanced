@@ -40,7 +40,7 @@ namespace ThatsMySong.Repositories
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
-                                AlbumId = reader.GetInt32(reader.GetOrdinal("AblumId")),
+                                AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId")),
                                 Album = new Album()
                                 {
                                     Id = reader.GetInt32(reader.GetOrdinal("Id")),

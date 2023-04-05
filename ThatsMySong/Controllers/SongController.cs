@@ -32,20 +32,6 @@ namespace ThatsMySong.Controllers
         }
 
         [Authorize]
-        [HttpGet("HipHopSongs")]
-        public IActionResult GetHipHopSongs()
-        {
-            return Ok(_songRepo.GetAllHipHopSongs());
-        }
-
-        [Authorize]
-        [HttpGet("SampledSongs")]
-        public IActionResult GetSampledSongs()
-        {
-            return Ok(_songRepo.GetAllSampledSongs());
-        }
-
-        [Authorize]
         [HttpGet("Genres")]
         public IActionResult GetGenres()
         {
